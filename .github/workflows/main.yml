@@ -13,10 +13,11 @@ jobs:
     - name: Checkout du code
       uses: actions/checkout@v3
       
-    - name: Modif droits
+    - name: Droits 
       run: |
-      	chmod +x droits.sh
-      	./droits.sh
+        chmod +x droits.sh
+        ./droits.sh
+
 
     - name: Install Vim
       run: sudo apt-get update && sudo apt-get install vim -y
