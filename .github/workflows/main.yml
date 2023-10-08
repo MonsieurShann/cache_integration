@@ -1,0 +1,23 @@
+name: Cache Vim Package
+
+on:
+  push:
+    branches:
+      - main  # Vous pouvez spécifier votre branche principale ici shann
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v3
+
+    - name: Install Vim
+      run: sudo apt-get update && sudo apt-get install vim -y
+
+    - name: Cache Vim Package
+      uses: actions/cache@v3
+      with:
+        path: /var/cache/apt/archives  # Chemin vers le répertoire de cache des paquets apt
+        key: vim-apt-${{ runner.os }}-${{ hashFiles('**/apt.*') }}
